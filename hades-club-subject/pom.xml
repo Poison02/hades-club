@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zch</groupId>
+    <artifactId>hades-club-subject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <description>哈迪斯-club社区项目!</description>
+    <modules>
+        <module>hades-club-subject-api</module>
+        <module>hades-club-subject-application</module>
+        <module>hades-club-subject-common</module>
+        <module>hades-club-subject-domain</module>
+        <module>hades-club-subject-infra</module>
+        <module>hades-club-subject-starter</module>
+    </modules>
+
+
+</project>
