@@ -5,17 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.zch</groupId>
-        <artifactId>hades-club-subject</artifactId>
+        <artifactId>hades-club-subject-application</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hades-club-subject-application</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>hades-club-subject-application-controller</module>
-        <module>hades-club-subject-application-job</module>
-        <module>hades-club-subject-application-mq</module>
-    </modules>
+    <artifactId>hades-club-subject-application-mq</artifactId>
 
 
 </project>
