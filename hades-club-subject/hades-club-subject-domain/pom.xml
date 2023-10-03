@@ -11,5 +11,12 @@
 
     <artifactId>hades-club-subject-domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.zch</groupId>
+            <artifactId>hades-club-subject-infra</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

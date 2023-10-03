@@ -1,5 +1,7 @@
 package com.zch.subject.intra.basic.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * @author makejava
  * @since 2023-10-03 12:32:12
  */
+@Data
 public class SubjectCategory implements Serializable {
     private static final long serialVersionUID = 559070238877303282L;
     /**
