@@ -6,7 +6,7 @@ spring:
 
   datasource:
     username: root
-    password: 248613
+    password: Ntk0sn1GPq0Mbnp8sKXsaYmYY1CS7Y5LoWYd2PzUeGHGxhACfaebC69eXt8gsVthO2aGFSb4bS7XUBKevBX+Zw==
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/hades-club?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
     type: com.alibaba.druid.pool.DruidDataSource
@@ -15,6 +15,7 @@ spring:
       min-idle: 20
       max-active: 100
       max-wait: 60000
+      connectionProperties: config.decrypt=true;config.decrypt.key=${publicKey};
       stat-view-servlet:
         enabled: true
         url-pattern: /druid/*
@@ -27,3 +28,6 @@ spring:
           log-slow-sql: true
         wall:
           enabled: true
+        config:
+          enabled: true
+publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMGNO8lx8ZJwr7iEcXxTr+XpjjUBCT6Rkac84TQN0MPEOB3ede4L7vgoNvWiBqAIQD6vlAN2/GB9CY+sxoYDkM0CAwEAAQ==
