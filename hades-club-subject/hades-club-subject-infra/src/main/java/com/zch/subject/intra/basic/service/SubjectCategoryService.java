@@ -2,6 +2,8 @@ package com.zch.subject.intra.basic.service;
 
 import com.zch.subject.intra.basic.entity.SubjectCategory;
 
+import java.util.List;
+
 /**
  * 题目分类(SubjectCategory)表服务接口
  *
@@ -41,5 +43,7 @@ public interface SubjectCategoryService {
      * @return 是否成功
      */
     boolean deleteById(Long id);
+
+    List<SubjectCategory> queryCategory(SubjectCategory subjectCategory);
 
 }
