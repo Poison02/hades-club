@@ -1,6 +1,6 @@
-package com.zch.subject.intra.basic.mapper;
+package com.zch.subject.infra.basic.mapper;
 
-import com.zch.subject.intra.basic.entity.SubjectCategory;
+import com.zch.subject.infra.basic.entity.SubjectCategory;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 

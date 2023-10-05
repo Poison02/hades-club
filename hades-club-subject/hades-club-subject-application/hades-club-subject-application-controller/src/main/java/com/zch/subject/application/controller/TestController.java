@@ -1,7 +1,7 @@
 package com.zch.subject.application.controller;
 
-import com.zch.subject.intra.basic.entity.SubjectCategory;
-import com.zch.subject.intra.basic.service.SubjectCategoryService;
+import com.zch.subject.infra.basic.entity.SubjectCategory;
+import com.zch.subject.infra.basic.service.SubjectCategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

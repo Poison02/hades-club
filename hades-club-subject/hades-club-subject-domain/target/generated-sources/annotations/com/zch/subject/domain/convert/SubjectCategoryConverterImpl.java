@@ -1,14 +1,14 @@
 package com.zch.subject.domain.convert;
 
 import com.zch.subject.domain.entity.SubjectCategoryBO;
-import com.zch.subject.intra.basic.entity.SubjectCategory;
+import com.zch.subject.infra.basic.entity.SubjectCategory;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-04T13:02:17+0800",
+    date = "2023-10-05T19:21:18+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_341 (Oracle Corporation)"
 )
 public class SubjectCategoryConverterImpl implements SubjectCategoryConverter {

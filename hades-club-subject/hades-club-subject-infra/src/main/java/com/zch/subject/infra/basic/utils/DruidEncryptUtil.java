@@ -1,4 +1,4 @@
-package com.zch.subject.intra.basic.utils;
+package com.zch.subject.infra.basic.utils;
 
 import com.alibaba.druid.filter.config.ConfigTools;
 

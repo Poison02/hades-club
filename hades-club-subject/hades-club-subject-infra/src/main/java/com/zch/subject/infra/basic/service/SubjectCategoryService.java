@@ -1,6 +1,6 @@
-package com.zch.subject.intra.basic.service;
+package com.zch.subject.infra.basic.service;
 
-import com.zch.subject.intra.basic.entity.SubjectCategory;
+import com.zch.subject.infra.basic.entity.SubjectCategory;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public interface SubjectCategoryService {
      * @param subjectCategory 实例对象
      * @return 实例对象
      */
-    SubjectCategory update(SubjectCategory subjectCategory);
+    int update(SubjectCategory subjectCategory);
 
     /**
      * 通过主键删除数据
@@ -44,6 +44,11 @@ public interface SubjectCategoryService {
      */
     boolean deleteById(Long id);
 
+    /**
+     * 查询岗位大分类
+     * @param subjectCategory
+     * @return
+     */
     List<SubjectCategory> queryCategory(SubjectCategory subjectCategory);
 
 }
