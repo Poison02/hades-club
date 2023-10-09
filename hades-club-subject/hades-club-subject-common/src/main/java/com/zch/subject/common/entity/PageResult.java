@@ -1,5 +1,7 @@
 package com.zch.subject.common.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.List;
  * @author Zch
  * @date 2023/10/7
  **/
+@Data
 public class PageResult<T> implements Serializable {
 
     private Integer pageNo = 1;

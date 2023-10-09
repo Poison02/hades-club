@@ -2,6 +2,7 @@ package com.zch.subject.domain.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.zch.subject.common.entity.PageResult;
+import com.zch.subject.common.enums.IsDeletedFlagEnum;
 import com.zch.subject.domain.convert.SubjectInfoConverter;
 import com.zch.subject.domain.entity.SubjectInfoBO;
 import com.zch.subject.domain.entity.SubjectOptionBO;
@@ -9,8 +10,10 @@ import com.zch.subject.domain.handler.subject.SubjectTypeHandler;
 import com.zch.subject.domain.handler.subject.SubjectTypeHandlerFactory;
 import com.zch.subject.domain.service.SubjectInfoDomainService;
 import com.zch.subject.infra.basic.entity.SubjectInfo;
+import com.zch.subject.infra.basic.entity.SubjectLabel;
 import com.zch.subject.infra.basic.entity.SubjectMapping;
 import com.zch.subject.infra.basic.service.SubjectInfoService;
+import com.zch.subject.infra.basic.service.SubjectLabelService;
 import com.zch.subject.infra.basic.service.SubjectMappingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Zch
@@ -36,6 +40,9 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
 
     @Resource
     private SubjectTypeHandlerFactory subjectTypeHandlerFactory;
+
+    @Resource
+    private SubjectLabelService subjectLabelService;
 
     @Override
     public void add(SubjectInfoBO subjectInfoBO) {
@@ -84,11 +91,26 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
     @Override
     public SubjectInfoBO querySubjectInfo(SubjectInfoBO subjectInfoBO) {
         SubjectInfo subjectInfo = subjectInfoService.queryById(subjectInfoBO.getId());
-        Integer subjectType = subjectInfo.getSubjectType();
         SubjectTypeHandler handler = subjectTypeHandlerFactory.getHandler(subjectInfo.getSubjectType());
         SubjectOptionBO optionBO = handler.query(subjectInfo.getId().intValue());
         SubjectInfoBO bo = SubjectInfoConverter.INSTANCE.convertOptionAndInfoToBo(optionBO, subjectInfo);
-        List<String> labelNameList = new ArrayList<>();
+
+        SubjectMapping subjectMapping = new SubjectMapping();
+        subjectMapping.setSubjectId(subjectInfo.getId());
+        subjectMapping.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
+        List<SubjectMapping> mappingList = subjectMappingService.queryLabelId(subjectMapping);
+        List<Long> labelIdList = mappingList.stream()
+                .map(SubjectMapping::getLabelId)
+                .collect(Collectors.toList());
+        List<String> labelNameList = null;
+        if (labelIdList.isEmpty()) {
+            labelNameList = new ArrayList<>();
+        } else {
+            List<SubjectLabel> labelList = subjectLabelService.batchQueryById(labelIdList);
+            labelNameList = labelList.stream()
+                    .map(SubjectLabel::getLabelName)
+                    .collect(Collectors.toList());
+        }
         //转换
         bo.setLabelName(labelNameList);
         return bo;

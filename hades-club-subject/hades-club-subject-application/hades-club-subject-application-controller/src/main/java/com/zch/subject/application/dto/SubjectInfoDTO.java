@@ -12,7 +12,7 @@ import java.util.List;
  * @date 2023/10/7
  **/
 @Data
-public class SubjectInfoDTO  extends PageInfo implements Serializable {
+public class SubjectInfoDTO extends PageInfo implements Serializable {
 
     /**
      * 主键

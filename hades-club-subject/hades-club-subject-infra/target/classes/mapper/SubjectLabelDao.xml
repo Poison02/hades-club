@@ -97,10 +97,13 @@
         select
         id, label_name, sort_num, created_by, created_time, update_by, is_deleted, update_time
         from subject_label
-        where id in
-        <foreach open="(" close=")" collection="list" item="id" separator=",">
-            #{id}
-        </foreach>
+        <if test="id != null">
+            where id in
+            <foreach open="(" close=")" collection="list" item="id" separator=",">
+                #{id}
+            </foreach>
+        </if>
+
     </select>
 
     <!--新增所有列-->

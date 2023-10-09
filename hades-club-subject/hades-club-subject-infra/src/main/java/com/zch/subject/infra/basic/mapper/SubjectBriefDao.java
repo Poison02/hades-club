@@ -26,7 +26,7 @@ public interface SubjectBriefDao {
      * @param subjectBrief 查询条件
      * @return 对象列表
      */
-    List<SubjectBrief> queryAllByLimit(SubjectBrief subjectBrief);
+    SubjectBrief queryAllByLimit(SubjectBrief subjectBrief);
 
     /**
      * 统计总行数
