@@ -1,0 +1,157 @@
+.option-input-container {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    padding-top: 19px;
+    // 选项模块
+    .option-input-main {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        // 选项label-abcd...
+        .option-input-title-option {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 140px;
+            line-height: 40px;
+            font-size: 16px;
+            color: rgba(51, 51, 51, 1);
+        }
+        .option-input-item {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 14px;
+            line-height: 22px;
+            transition: all 0.5s;
+            cursor: pointer;
+            .option-input-item-header {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                padding: 4px 10px;
+                width: 100%;
+                min-height: 48px;
+                background: rgba(255, 255, 255, 1);
+                border: 1px solid #d9d9d9;
+                border-radius: 7px;
+            }
+            .option-input-item-delete {
+                display: flex;
+                align-items: center;
+                margin-left: 19px;
+                width: 19px;
+                .option-input-item-delete-icon {
+                    width: 19px;
+                    height: 19px;
+                }
+            }
+        }
+        // 编辑器
+        .option-input-editor {
+            display: flex;
+            flex-direction: column;
+            margin-right: 38px;
+            margin-left: 124px;
+            width: 100%;
+            font-size: 14px;
+            line-height: 22px;
+            transition: all 0.5s;
+            .option-input-editor-btns {
+                display: flex;
+                margin-top: 19px;
+                .option-input-editor-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 115px;
+                    height: 43px;
+                    font-size: 14px;
+                    color: rgba(24, 24, 29, 1);
+                    cursor: pointer;
+                    background: rgba(255, 255, 255, 1);
+                    border: 1px solid rgba(208, 212, 222, 1);
+                    border-radius: 22px;
+                }
+                .option-input-editor-submit-btn {
+                    margin-left: 19px;
+                    color: rgba(255, 255, 255, 1);
+                    font-weight: 500;
+                    background: rgba(60, 110, 238, 1);
+                    border: 2px solid rgba(60, 110, 238, 1);
+                }
+            }
+        }
+    }
+
+    // 必填项
+    .option-input-title {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 140px;
+        line-height: 40px;
+        font-size: 16px;
+        color: rgba(51, 51, 51, 1);
+    }
+    // 非必填项
+    .option-input-title-required {
+        &:before {
+            display: inline-block;
+            margin-right: 4px;
+            margin-top: 1px;
+            color: #f5222d;
+            font-size: 16px;
+            content: '*';
+        }
+    }
+    // 选项模块-操作按钮
+    .option-input-option-btn {
+        margin-right: 8px;
+        padding: 0 32px;
+        height: 48px;
+        text-align: center;
+        line-height: 48px;
+        font-size: 14px;
+        font-weight: normal;
+        color: rgba(60, 110, 238, 1);
+        cursor: pointer;
+        background: rgba(255, 255, 255, 1);
+        border: 1px solid rgba(240, 240, 240, 1);
+        border-radius: 7px;
+    }
+    // 选项模块-操作按钮-输入框
+    .option-input-option-input {
+        padding-left: 14px;
+        padding-right: 4px;
+        color: #333;
+        .ant-select,
+        .ant-select-open,
+        .ant-select-focused,
+        .ant-select-enabled {
+            box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+        }
+        // 正确选项：去除两边外边距
+        .ant-select-selection--single .ant-select-selection__rendered {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        // 正确选项：去除边框
+        .ant-select-selection {
+            border: none;
+        }
+        //  正确选项：值的位置优化
+        .ant-select-selection-selected-value {
+            margin-left: 10px;
+        }
+        .ant-input {
+            padding: 4px;
+        }
+        // 正确选项：距离右边的位置
+        .ant-select-selection__rendered {
+            margin-right: 0;
+        }
+    }
+}

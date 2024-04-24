@@ -1,0 +1,97 @@
+.brush-question-component {
+  .brush-question-component-tab1-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 20px 0;
+    .brush-question-component-tab1-head-title {
+      display: flex;
+      color: #333;
+      font-size: 16px;
+      font-weight: 400;
+      .brush-question-component-tab1-head-title-icon {
+        margin-right: 8px;
+      }
+    }
+    .brush-question-component-tab1-head-filter {
+      font-weight: 400;
+    }
+  }
+  .brush-question-component-tab1-body {
+    padding: 0 50px;
+    // display: flex;
+    // flex-wrap: wrap;
+
+    .brush-question-component-tab1-body-item {
+      border-radius: 2px;
+      box-shadow: 0 6px 20px 0 #bababa;
+      cursor: pointer;
+      display: block;
+      height: 230px;
+      margin-bottom: 17px;
+      margin-right: 17px;
+      width: 216px;
+      transition: all 0.5s;
+      &:hover {
+        transform: scale(1.04);
+      }
+      &:hover .brush-question-component-tab1-body-item-footer {
+        display: flex;
+      }
+      .brush-question-component-tab1-body-label {
+        width: 76px;
+        height: 20px;
+        background-image: linear-gradient(136deg, #ffe324, #e7920f 100%, #ffb533 0);
+        box-shadow: 2px 0 2px 0 rgb(175, 130, 6);
+        position: relative;
+        top: -3%;
+        left: -8px;
+        text-align: center;
+      }
+      .brush-question-component-tab1-body-item-title {
+        background-color: rgb(234, 235, 236);
+        color: #333;
+        font-size: 14px;
+        font-weight: 700;
+        height: 80px;
+        // line-height: 50px;
+        overflow: auto;
+        padding: 20px 10px 0;
+        text-align: center;
+      }
+      .brush-question-component-tab1-body-item-content {
+        display: flex;
+        margin: 10px;
+        color: #000000a6;
+        .brush-question-component-tab1-body-item-content-icon {
+          margin-right: 5px;
+        }
+      }
+      .brush-question-component-tab1-body-item-footer {
+        display: none;
+        margin-top: 40px;
+
+        .brush-question-component-tab1-body-item-footer-button {
+          flex: 1;
+          text-align: center;
+          &:hover {
+            color: #3c6eee;
+          }
+        }
+      }
+    }
+  }
+  .brush-question-component-tab2-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 20px 0;
+    .brush-question-component-tab2-head-title {
+      display: flex;
+      color: #333;
+      font-size: 16px;
+      font-weight: 400;
+      .brush-question-component-tab2-head-title-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}

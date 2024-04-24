@@ -1,0 +1,32 @@
+.category-card {
+  transition: all 0.5s;
+  color: white;
+  &-title {
+    font-size: 16px;
+  }
+  &-count {
+    font-size: 12px;
+  }
+  &:hover {
+    transform: translateY(-8px);
+  }
+  &.active {
+    transform: translateY(-8px);
+  }
+}
+
+/** label-list style **/
+.label-list-box {
+  padding-top: 15px;
+  .label-list-item {
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    .label-title {
+      width: 120px;
+      font-weight: bold;
+      color: #333;
+      font-size: 14px;
+    }
+  }
+}

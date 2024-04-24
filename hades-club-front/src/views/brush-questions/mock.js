@@ -1,0 +1,18 @@
+export const mockData = [
+    { id: 1, question: '我是问题1', answer: '我是答案1', isGood: 0, isCollection: 0, isComment: 0},
+    { id: 2, question: '我是问题2', answer: '我是答案2', isGood: 0, isCollection: 1, isComment: 0},
+    { id: 3, question: '我是问题3', answer: '我是答案3', isGood: 1, isCollection: 0, isComment: 0},
+    { id: 4, question: '我是问题4', answer: '我是答案4', isGood: 0, isCollection: 0, isComment: 1},
+    { id: 5, question: '我是问题5', answer: '我是答案5', isGood: 1, isCollection: 1, isComment: 0},
+    { id: 6, question: '我是问题6', answer: '我是答案6', isGood: 1, isCollection: 0, isComment: 1},
+    { id: 7, question: '我是问题7', answer: '我是答案7', isGood: 0, isCollection: 1, isComment: 1},
+    { id: 8, question: '我是问题8', answer: '我是答案8', isGood: 1, isCollection: 1, isComment: 1},
+    { id: 9, question: '我是问题9', answer: '我是答案9', isGood: 0, isCollection: 0, isComment: 0},
+    { id: 10, question: '我是问题10', answer: '我是答案10', isGood: 1, isCollection: 0, isComment: 0},
+    { id: 11, question: '我是问题11', answer: '我是答案11', isGood: 0, isCollection: 1, isComment: 0},
+    { id: 12, question: '我是问题12', answer: '我是答案12', isGood: 0, isCollection: 0, isComment: 1},
+    { id: 13, question: '我是问题13', answer: '我是答案13', isGood: 1, isCollection: 1, isComment: 0},
+    { id: 14, question: '我是问题14', answer: '我是答案14', isGood: 1, isCollection: 0, isComment: 1},
+    { id: 15, question: '我是问题15', answer: '我是答案15', isGood: 0, isCollection: 1, isComment: 1},
+    { id: 16, question: '我是问题16', answer: '我是答案16', isGood: 1, isCollection: 1, isComment: 1},
+]

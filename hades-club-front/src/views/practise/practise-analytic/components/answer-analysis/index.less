@@ -1,0 +1,146 @@
+.answer-analysis-box {
+    padding-bottom: 30px;
+    // 分页
+    .answer-analysis-paging {
+        padding: 20px 30px;
+        background-color: #fff;
+        border-bottom: 1px solid #ededed;
+        .answer-analysis-paging-tip {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        .answer-analysis-paging-list {
+            display: flex;
+            flex-wrap: wrap;
+            .answer-analysis-paging-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 4px;
+                margin-bottom: 20px;
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+                color: white;
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover {
+                    margin-top: -6px;
+                    margin-bottom: -6px;
+                    height: 44px;
+                }
+            }
+            // 选中
+            .answer-analysis-paging-item-active {
+                margin-top: -6px;
+                margin-bottom: -6px;
+                height: 44px;
+            }
+            // 答错
+            .answer-analysis-error {
+                background-color: #ff431e;
+            }
+            // 答对
+            .answer-analysis-rigth {
+                background-color: rgba(60, 110, 238, 1);
+            }
+        }
+    }
+    // 题名
+    .answer-analysis-name {
+        display: flex;
+        align-items: center;
+        padding: 20px 30px;
+        font-size: 14px;
+        background-color: #fff;
+        border-bottom: 1px solid #ededed;
+        .answer-analysis-name-num {
+            padding: 5px 7px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 30px;
+            color: #fff;
+            font-weight: 400;
+            border-radius: 50%;
+            background-color: rgba(60, 110, 238, 1);
+        }
+        .answer-analysis-name-text {
+            margin-left: 10px;
+        }
+    }
+    // 答案
+    .answer-analysis-answer {
+        padding: 20px 30px;
+    }
+    // 选项
+    .answer-analysis-option-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0 30px;
+        .answer-analysis-option-item {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #d4d4d4;
+            background: #fff;
+        }
+        // 正确
+        .answer-analysis-option-item-rigth {
+            border-color: rgba(60, 110, 238, 1);
+        }
+        // 错误
+        .answer-analysis-option-item-error {
+            border-color: #ff431e;
+        }
+    }
+    // 知识点
+    .answer-analysis-points {
+        padding: 0 30px 20px;
+        font-size: 14px;
+        background-color: rgba(60, 110, 238, 0.08);
+        .answer-analysis-points-tip {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            color: rgb(102, 102, 102);
+        }
+        .answer-analysis-points-list {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .answer-analysis-points-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 4px;
+                padding: 0 8px;
+                height: 22px;
+                color: #999;
+                font-size: 12px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 12px;
+                &:hover {
+                    color: rgba(60, 110, 238, 1);
+                    border-color: rgba(60, 110, 238, 1);
+                }
+            }
+        }
+    }
+    // 解析
+    .answer-analysis-parse {
+        padding: 0 30px 20px;
+        font-size: 14px;
+        background-color: #fff;
+        .answer-analysis-parse-tip {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            color: rgb(102, 102, 102);
+        }
+        .answer-analysis-parse-text {
+            color: #333;
+        }
+    }
+}

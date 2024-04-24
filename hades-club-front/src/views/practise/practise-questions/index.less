@@ -1,0 +1,50 @@
+.practice-questions-container {
+  margin: 0 auto;
+  display: flex;
+  width: 1200px;
+  // padding: 20px 50px;
+  border-radius: 5px;
+  // flex-direction: column;
+  overflow: auto;
+  .practice-questions-menu {
+    margin-right: 20px;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: white;
+
+    .ant-menu-submenu > .ant-menu {
+      background-color: #fafafa;
+    }
+    // 右边线去掉
+    .ant-menu-inline,
+    .ant-menu-vertical,
+    .ant-menu-vertical-left {
+      border-right: 0;
+    }
+  }
+  .practice-questions-box {
+    flex: 1;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px 50px;
+    border-radius: 5px;
+    flex-direction: column;
+    overflow: auto;
+    .tab-name {
+      color: rgba(60, 110, 238, 1) !important;
+    }
+    .but {
+      margin-bottom: 50px;
+      .button {
+        // size: 25px;
+        width: 120px;
+        block-size: 40px;
+        color: white;
+        // background-color: rgba(60, 110, 238, 0.7) !important;
+        background-color: rgba(60, 110, 238, 1);
+        border-radius: 36px;
+        float: right;
+      }
+    }
+  }
+}

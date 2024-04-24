@@ -1,0 +1,70 @@
+.practice-paging-box {
+    padding: 20px;
+    border-top: 1px dashed #ddd;
+    .practice-paging-tips {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #666;
+        .practice-paging-tip {
+            padding: 5px 10px;
+            font-size: 14px;
+            background: #f2f2f2;
+        }
+    }
+
+    .practice-paging-list {
+        display: flex;
+        flex-wrap: wrap;
+        .practice-paging-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            &:hover {
+                color: white;
+                background-color: rgba(60, 110, 238, 1);
+            }
+        }
+        // 未选中
+        .practice-paging-item-unactive {
+            color: #dce4ec;
+            &:after {
+                background: #aaa;
+            }
+        }
+        // 选中
+        .practice-paging-item-active {
+            color: white;
+            background-color: rgba(60, 110, 238, 1);
+            &:after {
+                background: #fff;
+            }
+        }
+        // 有答案
+        .practice-paging-item-answer {
+            color: rgba(60, 110, 238, 1);
+            &:after {
+                background: rgba(60, 110, 238, 1);
+            }
+        }
+        // 被标记
+        .practice-paging-item-mark {
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                right: 3px;
+                top: 3px;
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+            }
+        }
+    }
+}

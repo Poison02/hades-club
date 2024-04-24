@@ -1,0 +1,39 @@
+.login-box {
+  width: 100%;
+  height: 100%;
+  background: url(../../imgs/login_bg.jpg) no-repeat 50%;
+  background-size: cover;
+  min-height: 600px;
+  position: relative;
+  .login-container-inner {
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 534px;
+    transform: translate(-50%, -50%);
+    clear: both;
+    max-width: 1520px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .notes {
+      color: white;
+      max-width: 400px;
+      line-height: 30px;
+    }
+    .qrcode-box {
+      width: 400px;
+      height: 500px;
+      background: white;
+      border-radius: 10px;
+      text-align: center;
+      padding: 20px;
+      .qrcode-desc {
+        padding: 20px 0;
+        line-height: 30px;
+      }
+    }
+  }
+}

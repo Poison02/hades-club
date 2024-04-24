@@ -1,0 +1,107 @@
+.details-container {
+  width: 1200px;
+  margin: 0 auto;
+  overflow: auto;
+  background-color: #ffffff;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  .container-box {
+    background-color: #ffffff;
+    .container-box-title {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      .title-title {
+        font-size: 20px;
+        vertical-align: middle;
+        overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+        // word-wrap: normal;
+        max-width: 1000px;
+      }
+      .title-time {
+        display: flex;
+        align-items: center;
+        .title-timer-img {
+          margin: -4px 10px 0 0;
+          width: 30px;
+          height: 30px;
+          .title-timer-icon {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .details-question-number {
+      padding: 20px;
+      display: flex;
+      .question-number-number {
+        background-color: #e5e5e5;
+        padding: 0 5px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .question-number-mark {
+        margin: 0 8px;
+        width: 24px;
+        height: 24px;
+      }
+      .question-number-type {
+        background-color: #fff;
+        line-height: 1.5;
+        font-size: 16px;
+        border-radius: 3px;
+      }
+    }
+    .practice-main {
+      background-color: #fff;
+      padding: 20px;
+      padding: 10px 20px 20px;
+      .practice-text {
+        margin-bottom: 20px;
+        .practice-question {
+          margin-bottom: 20px;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+        .practice-answer-list {
+          width: 100%;
+          .practice-answer-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 12px 20px 13px;
+            word-break: break-all;
+            border: 1px solid #d4d4d4;
+            background-color: #fff;
+            border-radius: 4px;
+            &:hover {
+              cursor: pointer;
+              color: #1890ff;
+              background: #f3f3f3;
+              text-decoration: none;
+            }
+          }
+          .practice-answer-item-active {
+            color: #1890ff;
+            text-decoration: none;
+            border-color: #1890ff;
+          }
+          .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+.details-container-box-info {
+  margin-right: 10px;
+  width: 36px;
+  height: 36px;
+}

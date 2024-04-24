@@ -1,0 +1,46 @@
+.search-details-box {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px 50px;
+  border-radius: 5px;
+  overflow: auto;
+  .ant-card-body {
+    padding: 0 24px;
+  }
+  .search-details-box-search {
+    background-color: #f5f5f5;
+    padding: 20px 40px;
+    border-radius: 3px 3px 0 0;
+    font-size: 14px;
+  }
+  .search-details-box-content {
+    .search-details-box-content-main-item {
+      margin-top: 10px;
+      padding: 10px 0;
+      font-weight: 400;
+      border-bottom: 1px solid #e5e5e5;
+      .search-details-box-content-main-item-question {
+        color: #3c6eee;
+        cursor: pointer;
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      .search-details-box-content-main-item-answer {
+        font-size: 13px;
+        cursor: pointer;
+        letter-spacing: 0;
+        overflow: hidden;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2; /*要显示的行数*/
+        -webkit-box-orient: vertical;
+      }
+    }
+    .search-null {
+      display: block;
+      text-align: center;
+      margin: 50px 0;
+    }
+  }
+}

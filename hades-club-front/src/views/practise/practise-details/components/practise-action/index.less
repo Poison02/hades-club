@@ -1,0 +1,42 @@
+// 标记/提前交卷/交卷/下一题
+.practice-action-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  .practice-action-list {
+    display: flex;
+    // 标记
+    .practice-action-item {
+      margin-right: 30px;
+      line-height: 20px;
+      cursor: pointer;
+      .action-mark-icon {
+        margin-right: 4px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    // 按钮
+    .practice-action-button {
+      margin: 0 15px;
+      .action-button-advance-submit {
+        background-color: #ff6547;
+        border-color: #ff6547;
+        color: white;
+      }
+      .action-button-submit {
+        background-color: rgba(60, 110, 238, 1);
+        border-color: rgba(60, 110, 238, 1);
+        color: white;
+      }
+    }
+  }
+}
+// 提示
+.practice-action-tips {
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+  text-align: right;
+}
