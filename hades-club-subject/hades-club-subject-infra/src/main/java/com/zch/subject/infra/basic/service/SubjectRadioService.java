@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.service;
 
-import com.zch.subject.infra.basic.entity.SubjectRadio;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectRadio;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 单选题信息表(SubjectRadio)表服务接口
  *
  * @author makejava
- * @since 2023-10-07 16:17:19
+ * @since 2023-10-05 21:30:19
  */
 public interface SubjectRadioService {
 
@@ -20,7 +20,6 @@ public interface SubjectRadioService {
      */
     SubjectRadio queryById(Long id);
 
-
     /**
      * 新增数据
      *
@@ -28,6 +27,11 @@ public interface SubjectRadioService {
      * @return 实例对象
      */
     SubjectRadio insert(SubjectRadio subjectRadio);
+
+    /**
+     * 批量插入
+     */
+    void batchInsert(List<SubjectRadio> subjectRadioList);
 
     /**
      * 修改数据
@@ -45,10 +49,6 @@ public interface SubjectRadioService {
      */
     boolean deleteById(Long id);
 
-    /**
-     * 批量插入
-     */
-    void batchInsert(List<SubjectRadio> subjectRadioList);
-
     List<SubjectRadio> queryByCondition(SubjectRadio subjectRadio);
+
 }

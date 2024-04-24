@@ -1,6 +1,6 @@
 package com.zch.subject.domain.handler.subject;
 
-import com.zch.subject.common.enums.SubjectInfoTypeEnum;
+import com.jingdianjichi.subject.common.enums.SubjectInfoTypeEnum;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +10,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 题目类型工厂
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/5
+ */
 @Component
 public class SubjectTypeHandlerFactory implements InitializingBean {
+
     @Resource
     private List<SubjectTypeHandler> subjectTypeHandlerList;
 
@@ -31,4 +34,5 @@ public class SubjectTypeHandlerFactory implements InitializingBean {
             handlerMap.put(subjectTypeHandler.getHandlerType(), subjectTypeHandler);
         }
     }
+
 }

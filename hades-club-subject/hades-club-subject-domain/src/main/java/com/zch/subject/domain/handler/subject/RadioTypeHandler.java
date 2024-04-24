@@ -1,13 +1,13 @@
 package com.zch.subject.domain.handler.subject;
 
-import com.zch.subject.common.enums.IsDeletedFlagEnum;
-import com.zch.subject.common.enums.SubjectInfoTypeEnum;
-import com.zch.subject.domain.convert.RadioSubjectConverter;
-import com.zch.subject.domain.entity.SubjectAnswerBO;
-import com.zch.subject.domain.entity.SubjectInfoBO;
-import com.zch.subject.domain.entity.SubjectOptionBO;
-import com.zch.subject.infra.basic.entity.SubjectRadio;
-import com.zch.subject.infra.basic.service.SubjectRadioService;
+import com.jingdianjichi.subject.common.enums.IsDeletedFlagEnum;
+import com.jingdianjichi.subject.common.enums.SubjectInfoTypeEnum;
+import com.jingdianjichi.subject.domain.convert.RadioSubjectConverter;
+import com.jingdianjichi.subject.domain.entity.SubjectAnswerBO;
+import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.domain.entity.SubjectOptionBO;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectRadio;
+import com.jingdianjichi.subject.infra.basic.service.SubjectRadioService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -15,11 +15,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 单选题目的策略类
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/5
+ */
 @Component
-public class RadioTypeHandler implements SubjectTypeHandler{
+public class RadioTypeHandler implements SubjectTypeHandler {
 
     @Resource
     private SubjectRadioService subjectRadioService;

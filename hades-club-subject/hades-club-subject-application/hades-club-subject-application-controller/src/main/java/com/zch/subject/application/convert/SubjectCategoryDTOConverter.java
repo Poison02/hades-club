@@ -1,23 +1,27 @@
 package com.zch.subject.application.convert;
 
-import com.zch.subject.application.dto.SubjectCategoryDTO;
-import com.zch.subject.domain.entity.SubjectCategoryBO;
+import com.jingdianjichi.subject.application.dto.SubjectCategoryDTO;
+import com.jingdianjichi.subject.domain.entity.SubjectCategoryBO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/3
- **/
+ * 题目分类dto转换器
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/8
+ */
 @Mapper
 public interface SubjectCategoryDTOConverter {
 
     SubjectCategoryDTOConverter INSTANCE = Mappers.getMapper(SubjectCategoryDTOConverter.class);
 
-    SubjectCategoryBO convertDTOToBO(SubjectCategoryDTO subjectCategoryDTO);
+    List<SubjectCategoryDTO> convertBoToCategoryDTOList(List<SubjectCategoryBO> subjectCategoryDTO);
 
-    List<SubjectCategoryDTO> convertBoToDTO(List<SubjectCategoryBO> subjectCategoryBOList);
+    SubjectCategoryBO convertDtoToCategoryBO(SubjectCategoryDTO subjectCategoryDTO);
+
+    SubjectCategoryDTO convertBoToCategoryDTO(SubjectCategoryBO subjectCategoryBO);
 
 }

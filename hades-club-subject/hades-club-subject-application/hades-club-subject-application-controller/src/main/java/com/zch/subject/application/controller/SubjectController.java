@@ -2,31 +2,35 @@ package com.zch.subject.application.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Preconditions;
-import com.zch.subject.application.convert.SubjectAnswerDTOConverter;
-import com.zch.subject.application.convert.SubjectInfoDTOConverter;
-import com.zch.subject.application.dto.SubjectInfoDTO;
-import com.zch.subject.common.entity.PageResult;
-import com.zch.subject.common.entity.Result;
-import com.zch.subject.domain.entity.SubjectAnswerBO;
-import com.zch.subject.domain.entity.SubjectInfoBO;
-import com.zch.subject.domain.service.SubjectInfoDomainService;
-import com.zch.subject.infra.basic.entity.SubjectCategory;
-import com.zch.subject.infra.basic.service.SubjectCategoryService;
+import com.jingdianjichi.subject.application.convert.SubjectAnswerDTOConverter;
+import com.jingdianjichi.subject.application.convert.SubjectInfoDTOConverter;
+import com.jingdianjichi.subject.application.dto.SubjectInfoDTO;
+import com.jingdianjichi.subject.common.entity.PageResult;
+import com.jingdianjichi.subject.common.entity.Result;
+import com.jingdianjichi.subject.domain.entity.SubjectAnswerBO;
+import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.domain.service.SubjectInfoDomainService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectInfoEs;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/3
- **/
+ * 刷题controller
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/1
+ */
 @RestController
-@RequestMapping("/subject")
 @Slf4j
+@RequestMapping("/subject")
 public class SubjectController {
 
     @Resource
@@ -75,11 +79,13 @@ public class SubjectController {
             Preconditions.checkNotNull(subjectInfoDTO.getCategoryId(), "分类id不能为空");
             Preconditions.checkNotNull(subjectInfoDTO.getLabelId(), "标签id不能为空");
             SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTOToBO(subjectInfoDTO);
+            subjectInfoBO.setPageNo(subjectInfoDTO.getPageNo());
+            subjectInfoBO.setPageSize(subjectInfoDTO.getPageSize());
             PageResult<SubjectInfoBO> boPageResult = subjectInfoDomainService.getSubjectPage(subjectInfoBO);
             return Result.ok(boPageResult);
         } catch (Exception e) {
             log.error("SubjectCategoryController.add.error:{}", e.getMessage(), e);
-            return Result.fail("查询题目列表失败");
+            return Result.fail("分页查询题目失败");
         }
     }
 
@@ -102,5 +108,42 @@ public class SubjectController {
             return Result.fail("查询题目详情失败");
         }
     }
+
+    /**
+     * 全文检索
+     */
+    @PostMapping("/getSubjectPageBySearch")
+    public Result<PageResult<SubjectInfoEs>> getSubjectPageBySearch(@RequestBody SubjectInfoDTO subjectInfoDTO) {
+        try {
+            if (log.isInfoEnabled()) {
+                log.info("SubjectController.getSubjectPageBySearch.dto:{}", JSON.toJSONString(subjectInfoDTO));
+            }
+            Preconditions.checkArgument(StringUtils.isNotBlank(subjectInfoDTO.getKeyWord()), "关键词不能为空");
+            SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTOToBO(subjectInfoDTO);
+            subjectInfoBO.setPageNo(subjectInfoDTO.getPageNo());
+            subjectInfoBO.setPageSize(subjectInfoDTO.getPageSize());
+            PageResult<SubjectInfoEs> boPageResult = subjectInfoDomainService.getSubjectPageBySearch(subjectInfoBO);
+            return Result.ok(boPageResult);
+        } catch (Exception e) {
+            log.error("SubjectCategoryController.getSubjectPageBySearch.error:{}", e.getMessage(), e);
+            return Result.fail("全文检索失败");
+        }
+    }
+
+    /**
+     * 获取题目贡献榜
+     */
+    @PostMapping("/getContributeList")
+    public Result<List<SubjectInfoDTO>> getContributeList() {
+        try {
+            List<SubjectInfoBO> boList = subjectInfoDomainService.getContributeList();
+            List<SubjectInfoDTO> dtoList = SubjectInfoDTOConverter.INSTANCE.convertBOToDTOList(boList);
+            return Result.ok(dtoList);
+        } catch (Exception e) {
+            log.error("SubjectCategoryController.getContributeList.error:{}", e.getMessage(), e);
+            return Result.fail("获取贡献榜失败");
+        }
+    }
+
 
 }

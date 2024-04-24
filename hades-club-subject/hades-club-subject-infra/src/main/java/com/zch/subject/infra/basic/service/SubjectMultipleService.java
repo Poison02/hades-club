@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.service;
 
-import com.zch.subject.infra.basic.entity.SubjectMultiple;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectMultiple;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 多选题信息表(SubjectMultiple)表服务接口
  *
  * @author makejava
- * @since 2023-10-07 16:17:03
+ * @since 2023-10-05 21:30:05
  */
 public interface SubjectMultipleService {
 
@@ -44,7 +44,11 @@ public interface SubjectMultipleService {
      */
     boolean deleteById(Long id);
 
+    /**
+     * 批量插入
+     */
     void batchInsert(List<SubjectMultiple> subjectMultipleList);
 
     List<SubjectMultiple> queryByCondition(SubjectMultiple subjectMultiple);
+
 }

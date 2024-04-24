@@ -3,11 +3,14 @@ package com.zch.subject.application.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/3
- **/
+ * 题目分类
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/3
+ */
 @Data
 public class SubjectCategoryDTO implements Serializable {
 
@@ -36,4 +39,15 @@ public class SubjectCategoryDTO implements Serializable {
      */
     private Long parentId;
 
+    /**
+     * 数量
+     */
+    private Integer count;
+
+    /**
+     * 标签信息
+     */
+    private List<SubjectLabelDTO> labelDTOList;
+
 }
+

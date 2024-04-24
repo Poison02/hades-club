@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zch.subject.infra.basic.mapper.SubjectInfoDao">
+<mapper namespace="com.jingdianjichi.subject.infra.basic.mapper.SubjectInfoDao">
 
-    <resultMap type="com.zch.subject.infra.basic.entity.SubjectInfo" id="SubjectInfoMap">
+    <resultMap type="com.jingdianjichi.subject.infra.basic.entity.SubjectInfo" id="SubjectInfoMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="subjectName" column="subject_name" jdbcType="VARCHAR"/>
         <result property="subjectDifficult" column="subject_difficult" jdbcType="INTEGER"/>
@@ -12,15 +12,25 @@
         <result property="subjectParse" column="subject_parse" jdbcType="VARCHAR"/>
         <result property="createdBy" column="created_by" jdbcType="VARCHAR"/>
         <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
-        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SubjectInfoMap">
-        select
-          id, subject_name, subject_difficult, settle_name, subject_type, subject_score, subject_parse, created_by, created_time, is_deleted, update_by, update_time
+        select id,
+               subject_name,
+               subject_difficult,
+               settle_name,
+               subject_type,
+               subject_score,
+               subject_parse,
+               created_by,
+               created_time,
+               update_by,
+               update_time,
+               is_deleted
         from subject_info
         where id = #{id}
     </select>
@@ -28,7 +38,8 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="SubjectInfoMap">
         select
-          id, subject_name, subject_difficult, settle_name, subject_type, subject_score, subject_parse, created_by, created_time, is_deleted, update_by, update_time
+        id, subject_name, subject_difficult, settle_name, subject_type, subject_score, subject_parse, created_by,
+        created_time, update_by, update_time, is_deleted
         from subject_info
         <where>
             <if test="id != null">
@@ -58,14 +69,14 @@
             <if test="createdTime != null">
                 and created_time = #{createdTime}
             </if>
-            <if test="isDeleted != null">
-                and is_deleted = #{isDeleted}
-            </if>
             <if test="updateBy != null and updateBy != ''">
                 and update_by = #{updateBy}
             </if>
             <if test="updateTime != null">
                 and update_time = #{updateTime}
+            </if>
+            <if test="isDeleted != null">
+                and is_deleted = #{isDeleted}
             </if>
         </where>
         limit #{pageable.offset}, #{pageable.pageSize}
@@ -103,37 +114,121 @@
             <if test="createdTime != null">
                 and created_time = #{createdTime}
             </if>
-            <if test="isDeleted != null">
-                and is_deleted = #{isDeleted}
-            </if>
             <if test="updateBy != null and updateBy != ''">
                 and update_by = #{updateBy}
             </if>
             <if test="updateTime != null">
                 and update_time = #{updateTime}
             </if>
+            <if test="isDeleted != null">
+                and is_deleted = #{isDeleted}
+            </if>
         </where>
+    </select>
+
+    <select id="countByCondition" resultType="java.lang.Integer">
+        select count(1)
+        from subject_info a,
+        subject_mapping b
+        where
+        a.id = b.subject_id
+        and b.category_id = #{categoryId}
+        and b.label_id = #{labelId}
+        and a.is_deleted = 0
+        and b.is_deleted = 0
+        <if test="subjectInfo.subjectDifficult != null">
+            and a.subject_difficult = #{subjectInfo.subjectDifficult}
+        </if>
+        <if test="subjectInfo.subjectType != null">
+            and a.subject_type = #{subjectInfo.subjectType}
+        </if>
+    </select>
+
+    <select id="queryPage" resultMap="SubjectInfoMap">
+        select a.id,
+        a.subject_name,
+        a.subject_difficult,
+        a.settle_name,
+        a.subject_type,
+        a.subject_score,
+        a.subject_parse,
+        a.created_by,
+        a.created_time,
+        a.update_by,
+        a.update_time,
+        a.is_deleted
+        from subject_info a,
+        subject_mapping b
+        where
+        a.id = b.subject_id
+        and b.category_id = #{categoryId}
+        and b.label_id = #{labelId}
+        and a.is_deleted = 0
+        and b.is_deleted = 0
+        <if test="subjectInfo.subjectDifficult != null">
+            and a.subject_difficult = #{subjectInfo.subjectDifficult}
+        </if>
+        <if test="subjectInfo.subjectType != null">
+            and a.subject_type = #{subjectInfo.subjectType}
+        </if>
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="getContributeCount" resultType="com.jingdianjichi.subject.infra.basic.entity.SubjectInfo">
+        select count(1)   as subjectCount,
+               created_by as createdBy
+        from subject_info
+        where is_deleted = 0
+          and created_by is not null
+        group by created_by limit 0,5
+    </select>
+
+    <select id="querySubjectIdCursor" resultType="java.lang.Long">
+        select a.id
+        from subject_info a,
+        subject_mapping b
+        where a.id = b.subject_id
+        and b.category_id = #{categoryId}
+        and b.label_id = #{labelId}
+        <if test="cursor !=null and cursor == 1">
+            and a.id > #{subjectId}
+        </if>
+        <if test="cursor !=null and cursor == 0">
+            and a.id &lt; #{subjectId}
+        </if>
+        limit 0,1
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into subject_info(subject_name, subject_difficult, settle_name, subject_type, subject_score, subject_parse, created_by, created_time, is_deleted, update_by, update_time)
-        values (#{subjectName}, #{subjectDifficult}, #{settleName}, #{subjectType}, #{subjectScore}, #{subjectParse}, #{createdBy}, #{createdTime}, #{isDeleted}, #{updateBy}, #{updateTime})
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into subject_info(subject_name, subject_difficult, settle_name, subject_type, subject_score,
+        subject_parse, created_by, created_time, update_by, update_time, is_deleted)
+        values (#{subjectName}, #{subjectDifficult}, #{settleName}, #{subjectType}, #{subjectScore}, #{subjectParse},
+        #{createdBy}, #{createdTime}, #{updateBy}, #{updateTime}, #{isDeleted})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into subject_info(subject_name, subject_difficult, settle_name, subject_type, subject_score, subject_parse, created_by, created_time, is_deleted, update_by, update_time)
+        insert into subject_info(subject_name, subject_difficult, settle_name, subject_type, subject_score,
+        subject_parse, created_by, created_time, update_by, update_time, is_deleted)
         values
         <foreach collection="entities" item="entity" separator=",">
-        (#{entity.subjectName}, #{entity.subjectDifficult}, #{entity.settleName}, #{entity.subjectType}, #{entity.subjectScore}, #{entity.subjectParse}, #{entity.createdBy}, #{entity.createdTime}, #{entity.isDeleted}, #{entity.updateBy}, #{entity.updateTime})
+            (#{entity.subjectName}, #{entity.subjectDifficult}, #{entity.settleName}, #{entity.subjectType},
+            #{entity.subjectScore}, #{entity.subjectParse}, #{entity.createdBy}, #{entity.createdTime},
+            #{entity.updateBy}, #{entity.updateTime}, #{entity.isDeleted})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into subject_info(subject_name, subject_difficult, settle_name, subject_type, subject_score, subject_parse, created_by, created_time, is_deleted, update_by, update_time)
+        insert into subject_info(subject_name, subject_difficult, settle_name, subject_type, subject_score,
+        subject_parse, created_by, created_time, update_by, update_time, is_deleted)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.subjectName}, #{entity.subjectDifficult}, #{entity.settleName}, #{entity.subjectType}, #{entity.subjectScore}, #{entity.subjectParse}, #{entity.createdBy}, #{entity.createdTime}, #{entity.isDeleted}, #{entity.updateBy}, #{entity.updateTime})
+            (#{entity.subjectName}, #{entity.subjectDifficult}, #{entity.settleName}, #{entity.subjectType},
+            #{entity.subjectScore}, #{entity.subjectParse}, #{entity.createdBy}, #{entity.createdTime},
+            #{entity.updateBy}, #{entity.updateTime}, #{entity.isDeleted})
         </foreach>
         on duplicate key update
         subject_name = values(subject_name),
@@ -144,9 +239,9 @@
         subject_parse = values(subject_parse),
         created_by = values(created_by),
         created_time = values(created_time),
-        is_deleted = values(is_deleted),
         update_by = values(update_by),
-        update_time = values(update_time)
+        update_time = values(update_time),
+        is_deleted = values(is_deleted)
     </insert>
 
     <!--通过主键修改数据-->
@@ -177,14 +272,14 @@
             <if test="createdTime != null">
                 created_time = #{createdTime},
             </if>
-            <if test="isDeleted != null">
-                is_deleted = #{isDeleted},
-            </if>
             <if test="updateBy != null and updateBy != ''">
                 update_by = #{updateBy},
             </if>
             <if test="updateTime != null">
                 update_time = #{updateTime},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
             </if>
         </set>
         where id = #{id}
@@ -192,56 +287,10 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from subject_info where id = #{id}
+        delete
+        from subject_info
+        where id = #{id}
     </delete>
-
-    <select id="countByCondition" resultType="java.lang.Integer">
-        select count(1)
-        from subject_info a,
-             subject_mapping b
-        where
-            a.id = b.subject_id
-          and b.category_id = #{categoryId}
-          and b.label_id = #{labelId}
-          and a.is_deleted = 0
-          and b.is_deleted = 0
-        <if test="subjectInfo.subjectDifficult != null">
-            and a.subject_difficult = #{subjectInfo.subjectDifficult}
-        </if>
-        <if test="subjectInfo.subjectType != null">
-            and a.subject_type = #{subjectInfo.subjectType}
-        </if>
-    </select>
-
-    <select id="queryPage" resultMap="SubjectInfoMap">
-        select a.id,
-            a.subject_name,
-            a.subject_difficult,
-            a.settle_name,
-            a.subject_type,
-            a.subject_score,
-            a.subject_parse,
-            a.created_by,
-            a.created_time,
-            a.update_by,
-            a.update_time,
-            a.is_deleted
-        from subject_info a,
-             subject_mapping b
-        where
-            a.id = b.subject_id
-          and b.category_id = #{categoryId}
-          and b.label_id = #{labelId}
-          and a.is_deleted = 0
-          and b.is_deleted = 0
-          <if test="subjectInfo.subjectDifficult != null">
-             and a.subject_difficult = #{subjectInfo.subjectDifficult}
-          </if>
-          <if test="subjectInfo.subjectType != null">
-             and a.subject_type = #{subjectInfo.subjectType}
-          </if>
-        limit #{start}, #{pageSize}
-    </select>
 
 </mapper>
 

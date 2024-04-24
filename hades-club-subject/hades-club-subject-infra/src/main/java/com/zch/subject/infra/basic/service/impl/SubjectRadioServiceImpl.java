@@ -1,8 +1,8 @@
 package com.zch.subject.infra.basic.service.impl;
 
-import com.zch.subject.infra.basic.entity.SubjectRadio;
-import com.zch.subject.infra.basic.mapper.SubjectRadioDao;
-import com.zch.subject.infra.basic.service.SubjectRadioService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectRadio;
+import com.jingdianjichi.subject.infra.basic.mapper.SubjectRadioDao;
+import com.jingdianjichi.subject.infra.basic.service.SubjectRadioService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * 单选题信息表(SubjectRadio)表服务实现类
  *
  * @author makejava
- * @since 2023-10-07 16:17:19
+ * @since 2023-10-05 21:30:19
  */
 @Service("subjectRadioService")
 public class SubjectRadioServiceImpl implements SubjectRadioService {
@@ -42,6 +42,11 @@ public class SubjectRadioServiceImpl implements SubjectRadioService {
         return subjectRadio;
     }
 
+    @Override
+    public void batchInsert(List<SubjectRadio> subjectRadioList) {
+        this.subjectRadioDao.insertBatch(subjectRadioList);
+    }
+
     /**
      * 修改数据
      *
@@ -63,11 +68,6 @@ public class SubjectRadioServiceImpl implements SubjectRadioService {
     @Override
     public boolean deleteById(Long id) {
         return this.subjectRadioDao.deleteById(id) > 0;
-    }
-
-    @Override
-    public void batchInsert(List<SubjectRadio> subjectRadioList) {
-        this.subjectRadioDao.insertBatch(subjectRadioList);
     }
 
     @Override

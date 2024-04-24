@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.mapper;
 
-import com.zch.subject.infra.basic.entity.SubjectRadio;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectRadio;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 单选题信息表(SubjectRadio)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-07 16:17:19
+ * @since 2023-10-05 21:30:19
  */
 public interface SubjectRadioDao {
 

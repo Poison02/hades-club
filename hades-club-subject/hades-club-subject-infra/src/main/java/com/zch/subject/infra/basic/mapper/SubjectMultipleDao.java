@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.mapper;
 
-import com.zch.subject.infra.basic.entity.SubjectMultiple;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectMultiple;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 多选题信息表(SubjectMultiple)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-07 16:17:03
+ * @since 2023-10-05 21:30:05
  */
 public interface SubjectMultipleDao {
 

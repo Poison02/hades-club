@@ -1,28 +1,30 @@
 package com.zch.subject.domain.handler.subject;
 
-import com.zch.subject.common.enums.IsDeletedFlagEnum;
-import com.zch.subject.common.enums.SubjectInfoTypeEnum;
-import com.zch.subject.domain.convert.JudgeSubjectConverter;
-import com.zch.subject.domain.entity.SubjectAnswerBO;
-import com.zch.subject.domain.entity.SubjectInfoBO;
-import com.zch.subject.domain.entity.SubjectOptionBO;
-import com.zch.subject.infra.basic.entity.SubjectJudge;
-import com.zch.subject.infra.basic.service.SubjectJudgeService;
+import com.jingdianjichi.subject.common.enums.IsDeletedFlagEnum;
+import com.jingdianjichi.subject.common.enums.SubjectInfoTypeEnum;
+import com.jingdianjichi.subject.domain.convert.JudgeSubjectConverter;
+import com.jingdianjichi.subject.domain.entity.SubjectAnswerBO;
+import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.domain.entity.SubjectOptionBO;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectJudge;
+import com.jingdianjichi.subject.infra.basic.service.SubjectJudgeService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 判断题目的策略类
+ * 
+ * @author: ChickenWing
+ * @date: 2023/10/5
+ */
 @Component
 public class JudgeTypeHandler implements SubjectTypeHandler{
 
     @Resource
     private SubjectJudgeService subjectJudgeService;
-
+    
     @Override
     public SubjectInfoTypeEnum getHandlerType() {
         return SubjectInfoTypeEnum.JUDGE;

@@ -1,9 +1,9 @@
 package com.zch.subject.infra.basic.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.zch.subject.infra.basic.entity.SubjectCategory;
-import com.zch.subject.infra.basic.mapper.SubjectCategoryDao;
-import com.zch.subject.infra.basic.service.SubjectCategoryService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectCategory;
+import com.jingdianjichi.subject.infra.basic.mapper.SubjectCategoryDao;
+import com.jingdianjichi.subject.infra.basic.service.SubjectCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,24 +14,15 @@ import java.util.List;
  * 题目分类(SubjectCategory)表服务实现类
  *
  * @author makejava
- * @since 2023-10-03 12:32:15
+ * @since 2023-10-01 21:50:05
  */
 @Service("subjectCategoryService")
 @Slf4j
 public class SubjectCategoryServiceImpl implements SubjectCategoryService {
+
     @Resource
     private SubjectCategoryDao subjectCategoryDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    @Override
-    public SubjectCategory queryById(Long id) {
-        return this.subjectCategoryDao.queryById(id);
-    }
 
     /**
      * 新增数据
@@ -47,6 +38,11 @@ public class SubjectCategoryServiceImpl implements SubjectCategoryService {
         }
         this.subjectCategoryDao.insert(subjectCategory);
         return subjectCategory;
+    }
+
+    @Override
+    public SubjectCategory queryById(Long id) {
+        return this.subjectCategoryDao.queryById(id);
     }
 
     /**
@@ -74,5 +70,10 @@ public class SubjectCategoryServiceImpl implements SubjectCategoryService {
     @Override
     public List<SubjectCategory> queryCategory(SubjectCategory subjectCategory) {
         return this.subjectCategoryDao.queryCategory(subjectCategory);
+    }
+
+    @Override
+    public Integer querySubjectCount(Long id) {
+        return this.subjectCategoryDao.querySubjectCount(id);
     }
 }

@@ -1,12 +1,12 @@
 package com.zch.subject.infra.basic.service;
 
-import com.zch.subject.infra.basic.entity.SubjectBrief;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectBrief;
 
 /**
  * 简答题(SubjectBrief)表服务接口
  *
  * @author makejava
- * @since 2023-10-07 16:16:22
+ * @since 2023-10-05 21:29:22
  */
 public interface SubjectBriefService {
 
@@ -44,8 +44,7 @@ public interface SubjectBriefService {
 
     /**
      * 条件查询
-     * @param subjectBrief
-     * @return
      */
     SubjectBrief queryByCondition(SubjectBrief subjectBrief);
+
 }

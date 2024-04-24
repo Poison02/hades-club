@@ -4,10 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @author Zch
- * @date 2023/10/10
- **/
 @Configuration
 public class MybatisConfiguration {
 

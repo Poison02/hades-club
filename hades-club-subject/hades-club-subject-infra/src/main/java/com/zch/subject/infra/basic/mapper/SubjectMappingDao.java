@@ -1,15 +1,18 @@
 package com.zch.subject.infra.basic.mapper;
 
-import com.zch.subject.infra.basic.entity.SubjectMapping;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectMapping;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/5
- **/
+ * 题目分类关系表(SubjectMapping)表数据库访问层
+ *
+ * @author makejava
+ * @since 2023-10-03 22:17:07
+ */
 public interface SubjectMappingDao {
+
     /**
      * 通过ID查询单条数据
      *
@@ -69,7 +72,7 @@ public interface SubjectMappingDao {
     /**
      * 通过主键删除数据
      *
-     * @param id 主键
+     * @param 主键
      * @return 影响行数
      */
     int deleteById(int id);
@@ -77,3 +80,4 @@ public interface SubjectMappingDao {
     List<SubjectMapping> queryDistinctLabelId(SubjectMapping subjectMapping);
 
 }
+

@@ -1,12 +1,17 @@
 package com.zch.subject.domain.service;
 
-import com.zch.subject.common.entity.PageResult;
-import com.zch.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.common.entity.PageResult;
+import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectInfoEs;
+
+import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 题目领域服务
+ * 
+ * @author: ChickenWing
+ * @date: 2023/10/3
+ */
 public interface SubjectInfoDomainService {
 
     /**
@@ -24,4 +29,13 @@ public interface SubjectInfoDomainService {
      */
     SubjectInfoBO querySubjectInfo(SubjectInfoBO subjectInfoBO);
 
+    /**
+     * 全文检索
+     */
+    PageResult<SubjectInfoEs> getSubjectPageBySearch(SubjectInfoBO subjectInfoBO);
+
+    List<SubjectInfoBO> getContributeList();
+
+
 }
+

@@ -1,8 +1,8 @@
 package com.zch.subject.infra.basic.service.impl;
 
-import com.zch.subject.infra.basic.entity.SubjectMultiple;
-import com.zch.subject.infra.basic.mapper.SubjectMultipleDao;
-import com.zch.subject.infra.basic.service.SubjectMultipleService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectMultiple;
+import com.jingdianjichi.subject.infra.basic.mapper.SubjectMultipleDao;
+import com.jingdianjichi.subject.infra.basic.service.SubjectMultipleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * 多选题信息表(SubjectMultiple)表服务实现类
  *
  * @author makejava
- * @since 2023-10-07 16:17:03
+ * @since 2023-10-05 21:30:05
  */
 @Service("subjectMultipleService")
 public class SubjectMultipleServiceImpl implements SubjectMultipleService {
@@ -29,6 +29,7 @@ public class SubjectMultipleServiceImpl implements SubjectMultipleService {
     public SubjectMultiple queryById(Long id) {
         return this.subjectMultipleDao.queryById(id);
     }
+
 
     /**
      * 新增数据

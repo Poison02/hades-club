@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zch.subject.infra.basic.mapper.SubjectCategoryDao">
+<mapper namespace="com.jingdianjichi.subject.infra.basic.mapper.SubjectCategoryDao">
 
-    <resultMap type="com.zch.subject.infra.basic.entity.SubjectCategory" id="SubjectCategoryMap">
+    <resultMap type="com.jingdianjichi.subject.infra.basic.entity.SubjectCategory" id="SubjectCategoryMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="categoryName" column="category_name" jdbcType="VARCHAR"/>
         <result property="categoryType" column="category_type" jdbcType="INTEGER"/>
@@ -135,6 +135,14 @@
                 and is_deleted = #{isDeleted}
             </if>
         </where>
+    </select>
+
+    <select id="querySubjectCount" resultType="java.lang.Integer">
+        select count(distinct subject_id)
+        from subject_mapping a,
+             subject_label b
+        where a.label_id = b.id
+        and b.category_id = #{id}
     </select>
 
     <!--新增所有列-->

@@ -3,11 +3,14 @@ package com.zch.subject.domain.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/3
- **/
+ * 题目分类(SubjectCategory)实体类
+ *
+ * @author makejava
+ * @since 2023-10-01 21:49:59
+ */
 @Data
 public class SubjectCategoryBO implements Serializable {
 
@@ -36,4 +39,15 @@ public class SubjectCategoryBO implements Serializable {
      */
     private Long parentId;
 
+    /**
+     * 数量
+     */
+    private Integer count;
+
+    /**
+     * 标签bo数量
+     */
+    private List<SubjectLabelBO> labelBOList;
+
 }
+

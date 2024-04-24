@@ -5,9 +5,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 题目答案dto
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/5
+ */
 @Data
 public class SubjectAnswerDTO implements Serializable {
 
@@ -27,3 +29,4 @@ public class SubjectAnswerDTO implements Serializable {
     private Integer isCorrect;
 
 }
+

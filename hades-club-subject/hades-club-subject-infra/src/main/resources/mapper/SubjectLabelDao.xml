@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zch.subject.infra.basic.mapper.SubjectLabelDao">
+<mapper namespace="com.jingdianjichi.subject.infra.basic.mapper.SubjectLabelDao">
 
-    <resultMap type="com.zch.subject.infra.basic.entity.SubjectLabel" id="SubjectLabelMap">
+    <resultMap type="com.jingdianjichi.subject.infra.basic.entity.SubjectLabel" id="SubjectLabelMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="labelName" column="label_name" jdbcType="VARCHAR"/>
         <result property="sortNum" column="sort_num" jdbcType="INTEGER"/>
+        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
         <result property="createdBy" column="created_by" jdbcType="VARCHAR"/>
         <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
         <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
@@ -17,6 +18,7 @@
     <select id="queryById" resultMap="SubjectLabelMap">
         select id,
                label_name,
+               category_id,
                sort_num,
                created_by,
                created_time,
@@ -28,7 +30,7 @@
     </select>
 
     <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="SubjectLabelMap">
+    <select id="queryByCondition" resultMap="SubjectLabelMap">
         select
         id, label_name, sort_num, created_by, created_time, update_by, is_deleted, update_time
         from subject_label
@@ -38,6 +40,9 @@
             </if>
             <if test="labelName != null and labelName != ''">
                 and label_name = #{labelName}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
             </if>
             <if test="sortNum != null">
                 and sort_num = #{sortNum}
@@ -58,7 +63,6 @@
                 and update_time = #{updateTime}
             </if>
         </where>
-        limit #{pageable.offset}, #{pageable.pageSize}
     </select>
 
     <!--统计总行数-->
@@ -74,6 +78,9 @@
             </if>
             <if test="sortNum != null">
                 and sort_num = #{sortNum}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
             </if>
             <if test="createdBy != null and createdBy != ''">
                 and created_by = #{createdBy}
@@ -95,42 +102,46 @@
 
     <select id="batchQueryById" resultMap="SubjectLabelMap">
         select
-        id, label_name, sort_num, created_by, created_time, update_by, is_deleted, update_time
+        id, label_name, sort_num,category_id, created_by, created_time, update_by, is_deleted, update_time
         from subject_label
-        <if test="id != null">
-            where id in
-            <foreach open="(" close=")" collection="list" item="id" separator=",">
-                #{id}
-            </foreach>
-        </if>
-
+        where id in
+        <foreach open="(" close=")" collection="list" item="id" separator=",">
+            #{id}
+        </foreach>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into subject_label(label_name, sort_num, created_by, created_time, update_by, is_deleted, update_time)
-        values (#{labelName}, #{sortNum}, #{createdBy}, #{createdTime}, #{updateBy}, #{isDeleted}, #{updateTime})
+        insert into subject_label(label_name, sort_num, category_id, created_by, created_time, update_by, is_deleted,
+                                  update_time)
+        values (#{labelName}, #{sortNum}, #{categoryId}, #{createdBy}, #{createdTime}, #{updateBy}, #{isDeleted},
+                #{updateTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into subject_label(label_name, sort_num, created_by, created_time, update_by, is_deleted, update_time)
+        insert into subject_label(label_name, sort_num,category_id created_by, created_time, update_by, is_deleted,
+        update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.labelName}, #{entity.sortNum}, #{entity.createdBy}, #{entity.createdTime}, #{entity.updateBy},
+            (#{entity.labelName}, #{entity.sortNum},#{entity.categoryId}, #{entity.createdBy}, #{entity.createdTime},
+            #{entity.updateBy},
             #{entity.isDeleted}, #{entity.updateTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into subject_label(label_name, sort_num, created_by, created_time, update_by, is_deleted, update_time)
+        insert into subject_label(label_name, sort_num,category_id, created_by, created_time, update_by, is_deleted,
+        update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.labelName}, #{entity.sortNum}, #{entity.createdBy}, #{entity.createdTime}, #{entity.updateBy},
+            (#{entity.labelName}, #{entity.sortNum},#{entity.categoryId}, #{entity.createdBy}, #{entity.createdTime},
+            #{entity.updateBy},
             #{entity.isDeleted}, #{entity.updateTime})
         </foreach>
         on duplicate key update
         label_name = values(label_name),
         sort_num = values(sort_num),
+        category_id = values(category_id),
         created_by = values(created_by),
         created_time = values(created_time),
         update_by = values(update_by),
@@ -147,6 +158,9 @@
             </if>
             <if test="sortNum != null">
                 sort_num = #{sortNum},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
             </if>
             <if test="createdBy != null and createdBy != ''">
                 created_by = #{createdBy},

@@ -1,8 +1,8 @@
 package com.zch.subject.infra.basic.service.impl;
 
-import com.zch.subject.infra.basic.entity.SubjectLabel;
-import com.zch.subject.infra.basic.mapper.SubjectLabelDao;
-import com.zch.subject.infra.basic.service.SubjectLabelService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectLabel;
+import com.jingdianjichi.subject.infra.basic.mapper.SubjectLabelDao;
+import com.jingdianjichi.subject.infra.basic.service.SubjectLabelService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * 题目标签表(SubjectLabel)表服务实现类
  *
  * @author makejava
- * @since 2023-10-05 19:40:40
+ * @since 2023-10-03 21:50:31
  */
 @Service("subjectLabelService")
 public class SubjectLabelServiceImpl implements SubjectLabelService {
@@ -66,5 +66,10 @@ public class SubjectLabelServiceImpl implements SubjectLabelService {
     @Override
     public List<SubjectLabel> batchQueryById(List<Long> labelIdList) {
         return this.subjectLabelDao.batchQueryById(labelIdList);
+    }
+
+    @Override
+    public List<SubjectLabel> queryByCondition(SubjectLabel subjectLabel) {
+        return this.subjectLabelDao.queryByCondition(subjectLabel);
     }
 }

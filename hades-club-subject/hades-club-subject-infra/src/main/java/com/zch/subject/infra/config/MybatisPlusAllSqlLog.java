@@ -21,10 +21,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 
-/**
- * @author Zch
- * @date 2023/10/10
- **/
 public class MybatisPlusAllSqlLog implements InnerInterceptor {
     public static final Logger log = LoggerFactory.getLogger("sys-sql");
 

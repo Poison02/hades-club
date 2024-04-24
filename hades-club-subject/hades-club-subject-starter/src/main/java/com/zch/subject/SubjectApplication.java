@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan("com.zch")
 @MapperScan("com.zch.**.mapper")
+@EnableFeignClients(basePackages = "com.zch")
 public class SubjectApplication {
 
     public static void main(String[] args) {

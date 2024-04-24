@@ -3,9 +3,11 @@ package com.zch.subject.common.enums;
 import lombok.Getter;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 题目类型枚举
+ * 1单选 2多选 3判断 4简答
+ * @author: ChickenWing
+ * @date: 2023/10/3
+ */
 @Getter
 public enum SubjectInfoTypeEnum {
 

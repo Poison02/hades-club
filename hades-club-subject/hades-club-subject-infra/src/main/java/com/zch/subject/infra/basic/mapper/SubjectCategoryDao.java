@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.mapper;
 
-import com.zch.subject.infra.basic.entity.SubjectCategory;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectCategory;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 题目分类(SubjectCategory)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-03 12:32:11
+ * @since 2023-10-01 21:49:58
  */
 public interface SubjectCategoryDao {
 
@@ -70,6 +70,8 @@ public interface SubjectCategoryDao {
     int deleteById(Long id);
 
     List<SubjectCategory> queryCategory(SubjectCategory subjectCategory);
+
+    Integer querySubjectCount(Long id);
 
 }
 

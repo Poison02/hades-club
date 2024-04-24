@@ -12,10 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-/**
- * @author Zch
- * @date 2023/10/10
- **/
+
 @Intercepts({
         @Signature(type = Executor.class, method = "update", args = {MappedStatement.class,
                 Object.class}),

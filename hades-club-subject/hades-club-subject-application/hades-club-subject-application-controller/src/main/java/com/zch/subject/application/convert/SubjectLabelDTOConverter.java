@@ -1,16 +1,18 @@
 package com.zch.subject.application.convert;
 
-import com.zch.subject.application.dto.SubjectLabelDTO;
-import com.zch.subject.domain.entity.SubjectLabelBO;
+import com.jingdianjichi.subject.application.dto.SubjectLabelDTO;
+import com.jingdianjichi.subject.domain.entity.SubjectLabelBO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/5
- **/
+ * 标签dto的转换
+ * 
+ * @author: ChickenWing
+ * @date: 2023/10/3
+ */
 @Mapper
 public interface SubjectLabelDTOConverter {
 

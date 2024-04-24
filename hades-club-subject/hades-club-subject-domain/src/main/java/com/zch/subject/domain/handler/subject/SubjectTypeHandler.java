@@ -1,13 +1,9 @@
 package com.zch.subject.domain.handler.subject;
 
-import com.zch.subject.common.enums.SubjectInfoTypeEnum;
-import com.zch.subject.domain.entity.SubjectInfoBO;
-import com.zch.subject.domain.entity.SubjectOptionBO;
+import com.jingdianjichi.subject.common.enums.SubjectInfoTypeEnum;
+import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.domain.entity.SubjectOptionBO;
 
-/**
- * @author Zch
- * @date 2023/10/7
- **/
 public interface SubjectTypeHandler {
 
     /**

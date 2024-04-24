@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.service;
 
-import com.zch.subject.infra.basic.entity.SubjectJudge;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectJudge;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 判断题(SubjectJudge)表服务接口
  *
  * @author makejava
- * @since 2023-10-07 16:16:45
+ * @since 2023-10-05 21:29:47
  */
 public interface SubjectJudgeService {
 
@@ -45,4 +45,5 @@ public interface SubjectJudgeService {
     boolean deleteById(Long id);
 
     List<SubjectJudge> queryByCondition(SubjectJudge subjectJudge);
+
 }

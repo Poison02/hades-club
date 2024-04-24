@@ -1,8 +1,8 @@
 package com.zch.subject.infra.basic.service.impl;
 
-import com.zch.subject.infra.basic.entity.SubjectJudge;
-import com.zch.subject.infra.basic.mapper.SubjectJudgeDao;
-import com.zch.subject.infra.basic.service.SubjectJudgeService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectJudge;
+import com.jingdianjichi.subject.infra.basic.mapper.SubjectJudgeDao;
+import com.jingdianjichi.subject.infra.basic.service.SubjectJudgeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.List;
  * 判断题(SubjectJudge)表服务实现类
  *
  * @author makejava
- * @since 2023-10-07 16:16:45
+ * @since 2023-10-05 21:29:47
  */
 @Service("subjectJudgeService")
 public class SubjectJudgeServiceImpl implements SubjectJudgeService {

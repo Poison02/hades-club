@@ -1,14 +1,17 @@
 package com.zch.subject.domain.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.zch.subject.common.enums.IsDeletedFlagEnum;
-import com.zch.subject.domain.convert.SubjectLabelConverter;
-import com.zch.subject.domain.entity.SubjectLabelBO;
-import com.zch.subject.domain.service.SubjectLabelDomainService;
-import com.zch.subject.infra.basic.entity.SubjectLabel;
-import com.zch.subject.infra.basic.entity.SubjectMapping;
-import com.zch.subject.infra.basic.service.SubjectLabelService;
-import com.zch.subject.infra.basic.service.SubjectMappingService;
+import com.jingdianjichi.subject.common.enums.CategoryTypeEnum;
+import com.jingdianjichi.subject.common.enums.IsDeletedFlagEnum;
+import com.jingdianjichi.subject.domain.convert.SubjectLabelConverter;
+import com.jingdianjichi.subject.domain.entity.SubjectLabelBO;
+import com.jingdianjichi.subject.domain.service.SubjectLabelDomainService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectCategory;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectLabel;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectMapping;
+import com.jingdianjichi.subject.infra.basic.service.SubjectCategoryService;
+import com.jingdianjichi.subject.infra.basic.service.SubjectLabelService;
+import com.jingdianjichi.subject.infra.basic.service.SubjectMappingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -19,18 +22,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * @author Zch
- * @date 2023/10/5
- **/
 @Service
 @Slf4j
 public class SubjectLabelDomainServiceImpl implements SubjectLabelDomainService {
+
     @Resource
     private SubjectLabelService subjectLabelService;
 
     @Resource
     private SubjectMappingService subjectMappingService;
+
+    @Resource
+    private SubjectCategoryService subjectCategoryService;
 
     @Override
     public Boolean add(SubjectLabelBO subjectLabelBO) {
@@ -69,6 +72,15 @@ public class SubjectLabelDomainServiceImpl implements SubjectLabelDomainService 
 
     @Override
     public List<SubjectLabelBO> queryLabelByCategoryId(SubjectLabelBO subjectLabelBO) {
+        //如果当前分类是1级分类，则查询所有标签
+        SubjectCategory subjectCategory = subjectCategoryService.queryById(subjectLabelBO.getCategoryId());
+        if(CategoryTypeEnum.PRIMARY.getCode() == subjectCategory.getCategoryType()){
+            SubjectLabel subjectLabel = new SubjectLabel();
+            subjectLabel.setCategoryId(subjectLabelBO.getCategoryId());
+            List<SubjectLabel> labelList = subjectLabelService.queryByCondition(subjectLabel);
+            List<SubjectLabelBO> labelResultList = SubjectLabelConverter.INSTANCE.convertLabelToBoList(labelList);
+            return labelResultList;
+        }
         Long categoryId = subjectLabelBO.getCategoryId();
         SubjectMapping subjectMapping = new SubjectMapping();
         subjectMapping.setCategoryId(categoryId);
@@ -77,9 +89,7 @@ public class SubjectLabelDomainServiceImpl implements SubjectLabelDomainService 
         if (CollectionUtils.isEmpty(mappingList)) {
             return Collections.emptyList();
         }
-        List<Long> labelIdList = mappingList.stream()
-                .map(SubjectMapping::getLabelId)
-                .collect(Collectors.toList());
+        List<Long> labelIdList = mappingList.stream().map(SubjectMapping::getLabelId).collect(Collectors.toList());
         List<SubjectLabel> labelList = subjectLabelService.batchQueryById(labelIdList);
         List<SubjectLabelBO> boList = new LinkedList<>();
         labelList.forEach(label -> {

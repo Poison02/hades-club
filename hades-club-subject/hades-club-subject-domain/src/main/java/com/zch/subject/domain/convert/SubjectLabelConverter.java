@@ -1,14 +1,13 @@
 package com.zch.subject.domain.convert;
 
-import com.zch.subject.domain.entity.SubjectLabelBO;
-import com.zch.subject.infra.basic.entity.SubjectLabel;
+import com.jingdianjichi.subject.domain.entity.SubjectLabelBO;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectLabel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-/**
- * @author Zch
- * @date 2023/10/5
- **/
+import java.util.List;
+
+
 @Mapper
 public interface SubjectLabelConverter {
 
@@ -16,4 +15,5 @@ public interface SubjectLabelConverter {
 
     SubjectLabel convertBoToLabel(SubjectLabelBO subjectLabelBO);
 
+    List<SubjectLabelBO> convertLabelToBoList(List<SubjectLabel> subjectLabelList);
 }

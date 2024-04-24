@@ -5,9 +5,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author Zch
- * @date 2023/10/5
- **/
+ * 题目标签bo
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/3
+ */
 @Data
 public class SubjectLabelBO implements Serializable {
 
@@ -32,3 +34,4 @@ public class SubjectLabelBO implements Serializable {
     private Long categoryId;
 
 }
+

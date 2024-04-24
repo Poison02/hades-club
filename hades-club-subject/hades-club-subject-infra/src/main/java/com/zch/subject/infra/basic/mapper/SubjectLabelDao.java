@@ -1,15 +1,18 @@
 package com.zch.subject.infra.basic.mapper;
 
-import com.zch.subject.infra.basic.entity.SubjectLabel;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectLabel;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
-* @author Zch
-* @date 2023/10/5
-**/
+ * 题目标签表(SubjectLabel)表数据库访问层
+ *
+ * @author makejava
+ * @since 2023-10-03 21:50:29
+ */
 public interface SubjectLabelDao {
+
     /**
      * 通过ID查询单条数据
      *
@@ -24,7 +27,7 @@ public interface SubjectLabelDao {
      * @param subjectLabel 查询条件
      * @return 对象列表
      */
-    List<SubjectLabel> queryAllByLimit(SubjectLabel subjectLabel);
+    List<SubjectLabel> queryByCondition(SubjectLabel subjectLabel);
 
     /**
      * 统计总行数
@@ -78,3 +81,4 @@ public interface SubjectLabelDao {
     List<SubjectLabel> batchQueryById(@Param("list") List<Long> labelIdList);
 
 }
+

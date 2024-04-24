@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.service;
 
-import com.zch.subject.infra.basic.entity.SubjectLabel;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectLabel;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 题目标签表(SubjectLabel)表服务接口
  *
  * @author makejava
- * @since 2023-10-05 19:40:40
+ * @since 2023-10-03 21:50:30
  */
 public interface SubjectLabelService {
 
@@ -45,5 +45,7 @@ public interface SubjectLabelService {
     boolean deleteById(Long id);
 
     List<SubjectLabel> batchQueryById(List<Long> labelIdList);
+
+    List<SubjectLabel> queryByCondition(SubjectLabel subjectLabel);
 
 }

@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.mapper;
 
-import com.zch.subject.infra.basic.entity.SubjectBrief;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectBrief;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 简答题(SubjectBrief)表数据库访问层
  *
  * @author makejava
- * @since 2023-10-07 16:16:22
+ * @since 2023-10-05 21:29:22
  */
 public interface SubjectBriefDao {
 

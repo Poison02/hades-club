@@ -1,8 +1,8 @@
 package com.zch.subject.infra.basic.service.impl;
 
-import com.zch.subject.infra.basic.entity.SubjectMapping;
-import com.zch.subject.infra.basic.mapper.SubjectMappingDao;
-import com.zch.subject.infra.basic.service.SubjectMappingService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectMapping;
+import com.jingdianjichi.subject.infra.basic.mapper.SubjectMappingDao;
+import com.jingdianjichi.subject.infra.basic.service.SubjectMappingService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,10 +12,11 @@ import java.util.List;
  * 题目分类关系表(SubjectMapping)表服务实现类
  *
  * @author makejava
- * @since 2023-10-05 19:41:00
+ * @since 2023-10-03 22:17:07
  */
 @Service("subjectMappingService")
 public class SubjectMappingServiceImpl implements SubjectMappingService {
+
     @Resource
     private SubjectMappingDao subjectMappingDao;
 
@@ -71,4 +72,5 @@ public class SubjectMappingServiceImpl implements SubjectMappingService {
     public void batchInsert(List<SubjectMapping> mappingList) {
         this.subjectMappingDao.insertBatch(mappingList);
     }
+
 }

@@ -1,8 +1,8 @@
 package com.zch.subject.infra.basic.service.impl;
 
-import com.zch.subject.infra.basic.entity.SubjectBrief;
-import com.zch.subject.infra.basic.mapper.SubjectBriefDao;
-import com.zch.subject.infra.basic.service.SubjectBriefService;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectBrief;
+import com.jingdianjichi.subject.infra.basic.mapper.SubjectBriefDao;
+import com.jingdianjichi.subject.infra.basic.service.SubjectBriefService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,7 +11,7 @@ import javax.annotation.Resource;
  * 简答题(SubjectBrief)表服务实现类
  *
  * @author makejava
- * @since 2023-10-07 16:16:22
+ * @since 2023-10-05 21:29:22
  */
 @Service("subjectBriefService")
 public class SubjectBriefServiceImpl implements SubjectBriefService {

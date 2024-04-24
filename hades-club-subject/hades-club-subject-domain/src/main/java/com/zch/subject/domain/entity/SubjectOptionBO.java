@@ -6,9 +6,11 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 题目dto
+ *
+ * @author: ChickenWing
+ * @date: 2023/10/5
+ */
 @Data
 public class SubjectOptionBO implements Serializable {
 
@@ -23,3 +25,4 @@ public class SubjectOptionBO implements Serializable {
     private List<SubjectAnswerBO> optionList;
 
 }
+

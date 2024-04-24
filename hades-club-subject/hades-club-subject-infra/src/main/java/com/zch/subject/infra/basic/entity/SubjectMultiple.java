@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 多选题信息表(SubjectMultiple)实体类
  *
  * @author makejava
- * @since 2023-10-07 16:17:03
+ * @since 2023-10-05 21:30:05
  */
 @Data
 public class SubjectMultiple implements Serializable {
@@ -50,7 +50,7 @@ public class SubjectMultiple implements Serializable {
      * 更新时间
      */
     private Date updateTime;
-
+    
     private Integer isDeleted;
 
 }

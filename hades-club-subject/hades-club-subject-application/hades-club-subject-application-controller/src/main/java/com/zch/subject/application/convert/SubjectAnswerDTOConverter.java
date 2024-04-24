@@ -1,16 +1,18 @@
 package com.zch.subject.application.convert;
 
-import com.zch.subject.application.dto.SubjectAnswerDTO;
-import com.zch.subject.domain.entity.SubjectAnswerBO;
+import com.jingdianjichi.subject.application.dto.SubjectAnswerDTO;
+import com.jingdianjichi.subject.domain.entity.SubjectAnswerBO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/7
- **/
+ * 题目答案dto转换器
+ * 
+ * @author: ChickenWing
+ * @date: 2023/10/8
+ */
 @Mapper
 public interface SubjectAnswerDTOConverter {
 

@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 单选题信息表(SubjectRadio)实体类
  *
  * @author makejava
- * @since 2023-10-07 16:17:19
+ * @since 2023-10-05 21:30:19
  */
 @Data
 public class SubjectRadio implements Serializable {
@@ -50,7 +50,7 @@ public class SubjectRadio implements Serializable {
      * 修改时间
      */
     private Date updateTime;
-
+    
     private Integer isDeleted;
 
 }

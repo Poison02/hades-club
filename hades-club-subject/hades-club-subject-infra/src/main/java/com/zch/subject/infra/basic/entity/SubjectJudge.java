@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 判断题(SubjectJudge)实体类
  *
  * @author makejava
- * @since 2023-10-07 16:16:45
+ * @since 2023-10-05 21:29:47
  */
 @Data
 public class SubjectJudge implements Serializable {
@@ -42,7 +42,7 @@ public class SubjectJudge implements Serializable {
      * 更新时间
      */
     private Date updateTime;
-
+    
     private Integer isDeleted;
 
 }

@@ -1,6 +1,6 @@
 package com.zch.subject.infra.basic.service;
 
-import com.zch.subject.infra.basic.entity.SubjectInfo;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectInfo;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 题目信息表(SubjectInfo)表服务接口
  *
  * @author makejava
- * @since 2023-10-07 16:15:58
+ * @since 2023-10-05 21:28:58
  */
 public interface SubjectInfoService {
 
@@ -47,5 +47,9 @@ public interface SubjectInfoService {
     int countByCondition(SubjectInfo subjectInfo, Long categoryId, Long labelId);
 
     List<SubjectInfo> queryPage(SubjectInfo subjectInfo, Long categoryId, Long labelId, int start, Integer pageSize);
+
+    List<SubjectInfo> getContributeCount();
+
+    Long querySubjectIdCursor(Long subjectId, Long categoryId, Long labelId, int cursor);
 
 }

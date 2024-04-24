@@ -1,13 +1,15 @@
 package com.zch.subject.domain.service;
 
-import com.zch.subject.domain.entity.SubjectLabelBO;
+import com.jingdianjichi.subject.domain.entity.SubjectLabelBO;
 
 import java.util.List;
 
 /**
- * @author Zch
- * @date 2023/10/5
- **/
+ * 题目标签领域服务
+ * 
+ * @author: ChickenWing
+ * @date: 2023/10/3
+ */
 public interface SubjectLabelDomainService {
 
     /**
